@@ -1,0 +1,192 @@
+.popup-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .popup-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+  
+  .popup-description {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .modal-Footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0; /* Reset margin */
+    padding: 0; /* Reset padding */
+  }
+  
+  .quantity-container {
+    display: flex;
+    align-items: center;
+    margin: 0; /* Reset margin */
+    padding: 0; /* Reset padding */
+  }
+  
+  .quantity-container button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 12px; /* Equal padding on top and bottom */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .quantity-container button:hover {
+    background-color: #0056b3;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  }
+  
+  .quantity-container button:active {
+    background-color: #004a9b;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  
+  .quantity {
+    font-size: 18px;
+    margin: 0 10px;
+  }
+  
+  .quantity-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  
+  .quantity {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 10px;
+  }
+  
+  .add-to-cart-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.2s;
+    width: 20em;
+    margin-left: 10px;
+  }
+  
+  .add-to-cart-button:hover {
+    background-color: #0056b3;
+  }
+
+  .modal-header-product {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 200px;
+  }
+  
+  .popup-product-image {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-image-container {
+    position: relative;
+    margin: 20px 0;
+  }
+  
+  .spiciness-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+  }
+  
+  .spiciness-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .spiciness-label input[type="range"] {
+    flex: 1;
+    margin-left: 10px;
+  }
+  
+  .spiciness-value {
+    font-size: 14px;
+    color: #333;
+  }
+  
+  /* customizationStyles.css */
+  
+  .customization-container {
+    border: 1px solid #e0e0e0;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    margin-bottom: 10px;
+  }
+  
+  .customization-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .customization-message {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .customization-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .customization-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  
+  .addon-checkbox {
+    margin-right: 8px;
+  }
+  
+  .addon-label {
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .addon-label span {
+    font-weight: bold;
+    margin-left: 4px;
+  }

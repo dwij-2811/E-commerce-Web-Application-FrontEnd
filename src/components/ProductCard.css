@@ -1,0 +1,46 @@
+.category-name {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.product-button {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  width: 200px; /* Adjust the width as needed */
+  height: 200px; /* Set the height equal to the width for a square */
+  padding: 0;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.product-button:hover {
+  transform: scale(1.01); /* Add a slight scale on hover for a visual effect */
+}
+
+.product-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.product-description {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.product-price {
+  font-size: 16px;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.product-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}

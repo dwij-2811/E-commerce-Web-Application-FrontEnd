@@ -1,0 +1,51 @@
+/* OrderSuccessPage.module.css */
+
+.order-success-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .left-column {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .right-column {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .order-id {
+    font-size: 24px;
+    margin-top: 10px;
+  }
+  
+  .pickup-time {
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  
+  .shop-details {
+    margin-top: 20px;
+  }
+  
+  .address {
+    font-weight: bold;
+  }
+  
+  .phone {
+    margin-top: 5px;
+  }
+  

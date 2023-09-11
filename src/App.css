@@ -1,0 +1,35 @@
+/* App.css */
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  /* min-height: 100vh; Set minimum height to fill the viewport */
+}
+
+/* Style your NavBar (header) */
+/* Fixed to the top, full width, and other styles you prefer */
+
+/* Style your Footer */
+/* Fixed to the bottom, full width, and other styles you prefer */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #333;
+  color: white;
+  padding: 10px;
+}
+
+/* Adjust content position to avoid overlapping with header and footer */
+main {
+  padding-top: 60px; /* Adjust the value based on your header's height */
+  padding-bottom: 40px; /* Adjust the value based on your footer's height */
+  /* Add any other styles you want for the main content */
+}

@@ -1,0 +1,37 @@
+/* LeftNavBar.css */
+
+.left-nav-bar {
+    display: flex;
+    flex-direction: column;
+    max-height: 93vh;
+    /* Add additional styling as needed */
+  }
+  
+  .nav-button {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    /* border: 1px solid #ccc; */
+    border-radius: 5px;
+    margin-bottom: 10px;
+    /* Add additional styling as needed */
+  }
+  
+  .nav-button img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    /* Add additional styling as needed */
+  }
+  
+  .nav-button span {
+    /* Add styling for the label */
+    font-size: 14px;
+  }
+  
+  .nav-button:hover {
+    background-color: #f0f0f0;
+    /* Add additional hover effects */
+  }
+  

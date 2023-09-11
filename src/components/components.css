@@ -1,0 +1,182 @@
+.common-container {
+  padding: 10px 30px;
+  padding-top: 10px;
+  margin: 0 0 20px 0;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+.main-container {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 30px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.2s;
+  position: relative;
+  z-index: 1;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.form-input {
+  width: 100%;
+}
+
+.custom-button {
+  background-color: blue;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.modal-body-style {
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.popup-container {
+  border: 5px;
+  width: 100%;
+}
+
+.professional-button {
+  background-color: #007bff; /* Blue color */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s;
+  float: right;
+}
+
+.professional-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.action-button {
+  background-color: #007bff;
+  color: white;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  margin-right: 4px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pagination-button {
+  background-color: #007bff;
+  color: white;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  margin-right: 4px;
+}
+
+.statistic-container {
+  padding: 10px 30px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.2s;
+  position: relative;
+}
+
+.statistic-container-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+
+.nav-button {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px;
+  transition: background-color 0.3s, color 0.3s; /* Added color transition */
+  color: white; /* Ensure text color is white by default */
+  text-decoration: none; /* Remove underline style */
+}
+
+.nav-button:hover {
+  background-color: #555;
+  color: #fff; /* Change text color on hover */
+}
+
+.col-xl-1 {
+  flex: 0 0 calc(8.33%); /* 1 column out of 12 */
+  max-width: calc(8.33%);
+  padding-right: 6px; /* Add padding to the right to achieve 1.5 column width */
+}
+
+.submit-button {
+  display: inline-flex;
+  align-items: center;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Remove the hover styles */
+.submit-button:hover {
+  background-color: #007bff; /* Keep the background color consistent */
+}
+
+/* Styles for the button icon */
+.button-icon {
+  display: inline-block;
+  margin-right: 8px;
+}
+
+/* Animation when clicked */
+.submit-button.clicked {
+  background-color: #00cc00;
+  transform: scale(0.95);
+}

@@ -1,0 +1,56 @@
+/* Success Alert Styles */
+.toast-alert.success {
+  background-color: #4caf50; /* Green background for success alerts */
+  color: white;
+}
+
+/* Error Alert Styles */
+.toast-alert.error {
+  background-color: #d31204; /* Red background for error alerts */
+  color: white;
+}
+
+/* Common Styles */
+.toast-alert {
+  position: fixed;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  animation: slide-in 0.5s ease-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+  .toast-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .close-button {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .toast-progress {
+    width: 100%;
+    height: 2px;
+    background-color: #007bff; /* Blue color for the loading bar */
+    animation: load-progress 5s linear forwards; /* Adjust the duration as needed */
+  }
+
+  
+  @keyframes load-progress {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 100%;
+    }
+  }

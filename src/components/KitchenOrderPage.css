@@ -1,0 +1,159 @@
+/* KitchenOrderReceived.css */
+
+.kitchen-order-received {
+  padding: 20px;
+  background-color: #f7f7f7;
+  overflow-x: hidden; /* Hide horizontal overflow in the main container */
+}
+
+.order-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: hidden; /* Hide vertical overflow in the container */
+}
+
+.order-list {
+  display: flex;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  cursor: pointer;
+  transition: border 0.3s ease;
+  overflow-x: scroll; /* Allow horizontal overflow with a scroll bar */
+}
+
+.order-list h2 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+  
+  .order {
+    margin: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin-bottom: 20px;
+    transition: border 0.1s ease;
+  }
+
+  .order.selected {
+    border: 2px solid #007bff; /* Add a border for selected orders */
+  }
+
+  .order .order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .order .order-number {
+    font-size: 1.2rem;
+  }
+  
+  .order .pickup-time {
+    font-size: 0.9rem;
+    color: #777;
+  }
+  
+  .order .order-separator {
+    height: 1px;
+    background-color: #ddd;
+    margin: 10px 0;
+  }
+  
+  .order h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .order p {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 10px;
+  }
+  
+  .order ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .order li {
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+  }
+
+  .order .order-items {
+    margin-top: 10px;
+  }
+  
+  .order .order-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  
+  .order .item-quantity {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+
+  .order .item-spiciness {
+    font-size: 14px;
+    margin: 5px 0;
+    color: #777;
+  }
+  
+  .order .item-name {
+    flex-grow: 1;
+  }
+  
+  .order .item-addons {
+    list-style: disc;
+    margin-top: 5px;
+    margin-left: 15px;
+    padding-left: 15px;
+  }
+  
+  .payment-status {
+    padding: 10px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    border-radius: 5px;
+  }
+  
+  /* Payment Status Colors */
+  .payment-status.Paid {
+    background-color: #4caf50; /* Green */
+  }
+  
+  .payment-status.Pending {
+    background-color: #ff9800; /* Orange */
+  }
+  
+  .action-buttons {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .action-buttons button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    background-color: #007bff; /* Blue */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  /* Add additional styles or modify as needed */
+  
