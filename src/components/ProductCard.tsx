@@ -27,7 +27,7 @@ function ProductCard() {
   const fetchCategories = () =>
     axios
       .get<Categories[]>(
-        "https://czvjcvb9y3.execute-api.us-west-2.amazonaws.com/Prod/categories"
+        "https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/categories"
       )
       .then((res) => res.data);
 
@@ -41,12 +41,11 @@ function ProductCard() {
   });
 
   if (categoriesError) return <p>{categoriesError.message}</p>;
-  const categories = categoriesData;
-
+  
   const fetchProducts = () =>
     axios
       .get<Item[]>(
-        "https://czvjcvb9y3.execute-api.us-west-2.amazonaws.com/Prod/products"
+        "https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/products"
       )
       .then((res) => res.data);
 
@@ -60,12 +59,12 @@ function ProductCard() {
   });
 
   if (productsError) return <p>{productsError.message}</p>;
-  const items = productsData;
+  
 
   const fetchAddOns = () =>
     axios
       .get<AddOn[]>(
-        "https://czvjcvb9y3.execute-api.us-west-2.amazonaws.com/Prod/addons"
+        "https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/addons"
       )
       .then((res) => res.data);
 
@@ -79,12 +78,12 @@ function ProductCard() {
   });
 
   if (addOnsError) return <p>{addOnsError.message}</p>;
-  const addOns = addOnsData;
+  
 
   const fetchCustomizations = () =>
     axios
       .get<Customizations[]>(
-        "https://czvjcvb9y3.execute-api.us-west-2.amazonaws.com/Prod/customizations"
+        "https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/customizations"
       )
       .then((res) => res.data);
 
@@ -106,7 +105,11 @@ function ProductCard() {
         </div>
       </>
     );
+  const items = productsData;
+  const addOns = addOnsData;
   const customizations = customizationsData;
+  const categories = categoriesData;
+
 
   return (
     <>

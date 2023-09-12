@@ -9,18 +9,28 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const LoginPage = () => {
   const [showErrorAlert, setShowErrorAlert] = useState(false);
+  const [showSuccessAlert, setShowSuccessAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
-  const { authToken, login } = useAuth();
+  const { authToken, login, resetMessage, resetMessageRemove } = useAuth();
 
   useEffect(() => {
     if (authToken) {
       navigate("/products");
+    }
+  });
+
+  useEffect(() => {
+    if (resetMessage) {
+      setAlertMessage(resetMessage);
+      setShowSuccessAlert(true);
+      resetMessageRemove();
     }
   });
 
@@ -31,14 +41,20 @@ const LoginPage = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    setLoading(true);
+
     const loginData = {
       email,
       password,
     };
 
     axios
-      .post("https://czvjcvb9y3.execute-api.us-west-2.amazonaws.com/Prod/users/login", loginData)
+      .post(
+        "https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/users/login",
+        loginData
+      )
       .then((response) => {
+        setLoading(false);
         login(response.data.auth_token);
         const lastPage = localStorage.getItem("lastPage");
         if (lastPage) {
@@ -48,6 +64,7 @@ const LoginPage = () => {
         }
       })
       .catch((error) => {
+        setLoading(false);
         setAlertMessage(error.response.data.error);
         setShowErrorAlert(true);
       });
@@ -56,7 +73,7 @@ const LoginPage = () => {
   return (
     <div className="login-container">
       <div className="login-box">
-        <h2>Login</h2>
+        <h2 style={{ textAlign: "center" }}>Login</h2>
         <form className="checkout-form" onSubmit={handleSubmit}>
           <div className="form-group">
             <label className="form-label" htmlFor="username">
@@ -92,15 +109,20 @@ const LoginPage = () => {
               </span>
             </div>
           </div>
-          {showErrorAlert && <p style={{ color: "#eb0a0a" }}>{alertMessage}</p>}
+          {showErrorAlert && <div style={{ color: "#eb0a0a", textAlign: "center" }}>{alertMessage}</div>}
+          {showSuccessAlert && (
+            <div style={{ color: "#1eb10a", textAlign: "center" }}>{alertMessage}</div>
+          )}
           <button type="submit" className="login-button">
-            Login
+            {loading ? "Processing..." : "Login"}
           </button>
         </form>
-        <p>
+        <p style={{ textAlign: "center" }}>
           <Link to="/forgot-password">Forgot Password?</Link>
         </p>
-        <Link to="/signup">Don't have an account? Sign Up</Link>
+        <p style={{ textAlign: "center" }}>
+          <Link to="/signup">Don't have an account? Sign Up</Link>
+        </p>
       </div>
     </div>
   );

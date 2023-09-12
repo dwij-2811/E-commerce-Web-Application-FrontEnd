@@ -50,7 +50,7 @@ const CustomizationFormPage: React.FC = () => {
     editCustomizations: Customizations
   ) => {
     axios
-      .put(`https://czvjcvb9y3.execute-api.us-west-2.amazonaws.com/Prod/customizations/${customizationsId}`, editCustomizations)
+      .put(`https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/customizations/${customizationsId}`, editCustomizations)
       .then(() => {
         fetchAddons();
         handleCloseNewItemModal();
@@ -73,7 +73,7 @@ const CustomizationFormPage: React.FC = () => {
 
   const handleDeleteProduct = (productId: Customizations["id"]) => {
     axios
-      .delete(`https://czvjcvb9y3.execute-api.us-west-2.amazonaws.com/Prod/customizations/${productId}`)
+      .delete(`https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/customizations/${productId}`)
       .then(() => {
         fetchProducts();
         setAlertMessage("Customization Delete Success!");
@@ -99,7 +99,7 @@ const CustomizationFormPage: React.FC = () => {
   // ) => {
   //   // Update the product status on the server
   //   axios
-  //     .put(`https://czvjcvb9y3.execute-api.us-west-2.amazonaws.com/Prod/customizations/instock/${productId}`, {
+  //     .put(`https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/customizations/instock/${productId}`, {
   //       isInStock: newStatus,
   //     })
   //     .then(() => {
@@ -131,7 +131,7 @@ const CustomizationFormPage: React.FC = () => {
   const handleAddNewItem = (_Id:Customizations["id"], newItem: Customizations) => {
     console.log(newItem);
     axios
-      .post("https://czvjcvb9y3.execute-api.us-west-2.amazonaws.com/Prod/customizations", newItem, {headers: {"Content-Type": "application/json"}})
+      .post("https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/customizations", newItem, {headers: {"Content-Type": "application/json"}})
       .then(() => {
         fetchProducts();
         handleCloseNewItemModal();
@@ -159,7 +159,7 @@ const CustomizationFormPage: React.FC = () => {
 
   const fetchAddons = () => {
     axios
-      .get("https://czvjcvb9y3.execute-api.us-west-2.amazonaws.com/Prod/addons") // Adjust API endpoint
+      .get("https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/addons") // Adjust API endpoint
       .then((response) => {
         setAddons(response.data);
       })
@@ -175,7 +175,7 @@ const CustomizationFormPage: React.FC = () => {
 
   const fetchProducts = () => {
     axios
-      .get("https://czvjcvb9y3.execute-api.us-west-2.amazonaws.com/Prod/customizations") // Adjust API endpoint
+      .get("https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/customizations") // Adjust API endpoint
       .then((response) => {
         setProducts(response.data);
       })

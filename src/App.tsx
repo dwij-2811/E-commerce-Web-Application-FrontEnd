@@ -14,6 +14,9 @@ import ContactUs from "./components/ContactUs";
 import KitchenOrderPage from "./components/KitchenOrderPage";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "./App.css";
+import RestPasswordPage from "./components/ResetPasswordPage";
+import RequestResetPasswordPage from "./components/RequestResetPasswordPage";
+import AboutUs from "./components/AboutUs";
 
 function App() {
   const queryClient = new QueryClient();
@@ -32,8 +35,11 @@ function App() {
               <Route path="/order-success" element={<OrderSuccessPage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/signup" element={<SignupPage />} />
+              <Route path="/forgot-password" element={<RequestResetPasswordPage />} />
+              <Route path="/reset-password" element={<RestPasswordPage />} />
               <Route path="/contact-us" element={<ContactUs />} />
               <Route path="/kitchedorderpage" element={<KitchenOrderPage />} />
+              <Route path="/about-us" element={<AboutUs />} />
             </Routes>
           </Router>
         </div>

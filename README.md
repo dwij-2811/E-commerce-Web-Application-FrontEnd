@@ -2,6 +2,8 @@
 
 This is a React + Vite  + Ts website built to make food ordering easier online.
 
+Project can be found at https://www.amdavadistreetz.com/products
+
 This projects contains several components of which the main ones are
 
 User

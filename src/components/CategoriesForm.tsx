@@ -40,7 +40,7 @@ const CategoriesForm: React.FC<CategoriesFormProps> = ({
 
   const fetchProducts = () => {
     axios
-      .get("https://czvjcvb9y3.execute-api.us-west-2.amazonaws.com/Prod/products") // Adjust API endpoint
+      .get("https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/products") // Adjust API endpoint
       .then((response) => {
         setProducts(response.data);
       })

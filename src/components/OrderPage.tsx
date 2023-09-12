@@ -21,7 +21,7 @@ const OrdersPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   const [renderOrderDetailPage, setRenderOrderDetailPage] = useState(false);
-  const [orderDetails, setOrderDetails] = useState<OrderDetail[]>([]);
+  const [orderDetails, setOrderDetails] = useState<OrderDetail>();
 
   const filteredOrders = searchQuery
     ? orders.filter(
@@ -48,7 +48,7 @@ const OrdersPage = () => {
     // Fetch the last 10 orders from the API
     axios
       .get(
-        `https://czvjcvb9y3.execute-api.us-west-2.amazonaws.com/Prod/orders/getallorders?limit=${limit}&offset=${newOffset}`
+        `https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/orders/getallorders?limit=${limit}&offset=${newOffset}`
       )
       .then((response) => {
         setOrders(response.data.orders);
@@ -84,7 +84,7 @@ const OrdersPage = () => {
 
   const fetchOrder = (orderId: string) => {
     axios
-      .get(`https://czvjcvb9y3.execute-api.us-west-2.amazonaws.com/Prod/orders/getorder/${orderId}`)
+      .get(`https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/orders/getorder/${orderId}`)
       .then((response) => {
         setOrderDetails(response.data); // Update orderDetails state
       })

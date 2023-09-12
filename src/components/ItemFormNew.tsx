@@ -6,7 +6,7 @@ const ItemFormNew = () => {
 
     const handleAddNewItem = (newItem: Item) => {
         axios
-          .post("https://czvjcvb9y3.execute-api.us-west-2.amazonaws.com/Prod/products", newItem) // Send the new add-on data to the backend
+          .post("https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/products", newItem) // Send the new add-on data to the backend
           .then(() => {
           })
           .catch((error) => {

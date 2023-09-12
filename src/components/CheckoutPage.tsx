@@ -13,7 +13,8 @@ const CheckoutPage = () => {
   const { authToken } = useAuth();
 
   const axiosInstance = axios.create({
-    baseURL: "https://czvjcvb9y3.execute-api.us-west-2.amazonaws.com/Prod",
+    baseURL:
+      "https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production",
     headers: {
       "Content-Type": "application/json",
     },
@@ -30,6 +31,7 @@ const CheckoutPage = () => {
   };
 
   const [showAlert, setShowAlert] = useState(false);
+  const [showSuccessAlert, setShowSuccessAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
   const savedCart = localStorage.getItem("cart");
   const cart = savedCart ? JSON.parse(savedCart) : null;
@@ -48,6 +50,9 @@ const CheckoutPage = () => {
   const [postalCode, setPostalCode] = useState("");
   const [tipPercentage, setTipPercentage] = useState(0);
 
+  const [otp, setOtp] = useState("");
+  const [otpRequired, setOtpRequired] = useState(false);
+
   const stripe = useStripe();
   const elements = useElements();
 
@@ -56,15 +61,15 @@ const CheckoutPage = () => {
   const handleTipClick = (percentage: number) => {
     setTipPercentage(percentage);
     const customTip = cart.cartTotal * (percentage / 100);
-    setTip(customTip);
-    setOrderTotal(cart.cartTotal + customTip + tax);
+    setTip(parseFloat(customTip.toFixed(2)));
+    setOrderTotal(parseFloat((cart.cartTotal + customTip + tax).toFixed(2)));
   };
 
   const handleCustomTipChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTipPercentage(0);
     const customTip = parseFloat(e.target.value);
     if (!isNaN(customTip)) {
-      setTip(customTip);
+      setTip(parseFloat(customTip.toFixed(2)));
     }
     setOrderTotal(cart.cartTotal + customTip + tax);
   };
@@ -85,7 +90,9 @@ const CheckoutPage = () => {
     YT: 0.05, // Yukon (5% tax rate)
   };
 
-  function isValidProvince(province: string): province is keyof typeof TaxRateMap {
+  function isValidProvince(
+    province: string
+  ): province is keyof typeof TaxRateMap {
     return province in TaxRateMap;
   }
 
@@ -99,12 +106,63 @@ const CheckoutPage = () => {
     if (selectedProvince && isValidProvince(selectedProvince)) {
       // Calculate tax based on the tax rate and cart total
       const taxAmount = cart.cartTotal * TaxRateMap[selectedProvince];
-      setTax(taxAmount);
+      setTax(parseFloat(taxAmount.toFixed(2)));
       setOrderTotal(cart.cartTotal + tip + taxAmount);
     } else {
       // If the selected province is not found in the map, set tax to 0
       setTax(0);
       setOrderTotal(cart.cartTotal + tip + 0);
+    }
+  };
+
+  const handleOtpSubmit = () => {
+    const newOptData = {
+      phoneNumber: phoneNumber,
+      otp: otp,
+    }
+    axiosInstance
+      .post("/users/verify-otp", newOptData)
+      .then(() => {
+        setOtpRequired(false);
+        setAlertMessage("Phone Number Verified.");
+        setShowSuccessAlert(true);
+
+        setTimeout(() => {
+          setShowSuccessAlert(false);
+        }, 5000);
+      }).catch((error) => {
+        setAlertMessage("Error Verifying Otp: " + error.message.error);
+        setShowAlert(true);
+
+        setTimeout(() => {
+          setShowAlert(false);
+        }, 5000);
+      });
+  };
+
+  const checkPhoneNumber = () => {
+    const newOptData = {
+      phoneNumber: phoneNumber,
+    }
+    axiosInstance
+      .post("/users/check-phonenumber", newOptData)
+      .then(() => {
+        setOtpRequired(false);
+      }).catch((error) => {
+        console.log(error);
+        setAlertMessage("Phone Number Verification Required...");
+        setShowAlert(true);
+
+        setTimeout(() => {
+          setShowAlert(false);
+        }, 5000);
+      });
+  }
+
+  const handlePhoneNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPhoneNumber(e.target.value)
+    if (e.target.value.length == 10){
+      checkPhoneNumber()
     }
   };
 
@@ -161,7 +219,7 @@ const CheckoutPage = () => {
     };
 
     const orderData = {
-      order: newOrder,
+      customerDetails: newOrder,
       cart: cart,
       payment: newPayment,
     };
@@ -206,6 +264,14 @@ const CheckoutPage = () => {
           message={alertMessage}
           onClose={() => setShowAlert(false)}
           type="error"
+          duration={5000}
+        />
+      )}
+      {showSuccessAlert && (
+        <ToastAlert
+          message={alertMessage}
+          onClose={() => setShowSuccessAlert(false)}
+          type="success"
           duration={5000}
         />
       )}
@@ -328,17 +394,53 @@ const CheckoutPage = () => {
                 </div>
               </div>
               <div className="form-group">
-                <label className="form-label" htmlFor="phoneNumber">
-                  Phone Number
-                </label>
-                <input
-                  required
-                  type="number"
-                  className="form-control"
-                  id="phoneNumber"
-                  value={phoneNumber}
-                  onChange={(e) => setPhoneNumber(e.target.value)}
-                />
+                <div className="name-fields">
+                  <div className="first-name">
+                    <label className="form-label" htmlFor="phoneNumber">
+                      Phone Number
+                    </label>
+                    <div className="input-group mb-3">
+                      <span className="input-group-text">+1</span>
+                      <input
+                        required
+                        type="number"
+                        className="form-control"
+                        id="phoneNumber"
+                        value={phoneNumber}
+                        onChange={handlePhoneNumberChange}
+                      />
+                    </div>
+                  </div>
+                  {otpRequired && (
+                    <div>
+                      <div className="first-name">
+                        <label className="form-label" htmlFor="phoneNumber">
+                          OTP
+                        </label>
+                        <div className="input-group mb-3">
+                          <input
+                            required
+                            type="number"
+                            className="form-control"
+                            id="otp"
+                            value={otp}
+                            onChange={(e) => setOtp(e.target.value)}
+                          />
+                        </div>
+                      </div>
+                      <div className="first-name">
+                        <button
+                          type="button"
+                          className="btn btn-primary"
+                          onClick={() => handleOtpSubmit()}
+                          style={{ marginTop: "30px", marginLeft: "10px" }}
+                        >
+                          Submit Otp
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
             </form>
             <h2 className="checkout-title">Payment Details</h2>
@@ -369,7 +471,7 @@ const CheckoutPage = () => {
                 options={{
                   hidePostalCode: true,
                   iconStyle: "solid",
-                  value: {postalCode: postalCode},
+                  value: { postalCode: postalCode },
                   style: {
                     base: {
                       fontSize: "18px",
@@ -455,11 +557,13 @@ const CheckoutPage = () => {
                   ${(cart.cartTotal * (25 / 100)).toFixed(2)}
                 </button>
                 <div className="custom-tip">
-                  <input
-                    type="number"
-                    placeholder="$0.00"
-                    onChange={handleCustomTipChange}
-                  />
+                  <div className="input-group mb-3">
+                    <input
+                      type="number"
+                      placeholder="$0.00"
+                      onChange={handleCustomTipChange}
+                    />
+                  </div>
                 </div>
               </div>
             </div>

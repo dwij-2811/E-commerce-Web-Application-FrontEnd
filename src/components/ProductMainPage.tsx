@@ -6,7 +6,7 @@ import "./Cart.css";
 const ProductMainPage = () => {
   return (
     <CartProvider>
-      <div className="container-fluid">
+      <div className="container-fluid" style= {{backgroundColor: "#f5f5f5"}}>
         <div className="row">
           <div className="col-md-9">
             <div className="py-3" id="maincontainer">

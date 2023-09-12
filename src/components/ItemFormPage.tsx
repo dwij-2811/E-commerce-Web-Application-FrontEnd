@@ -38,7 +38,7 @@ const ItemFormPage: React.FC<ItemFormPageProps> = ({ onSelectPage }) => {
 
   const handleDeleteProduct = (productId: Item["id"]) => {
     axios
-      .delete(`https://czvjcvb9y3.execute-api.us-west-2.amazonaws.com/Prod/products/${productId}`)
+      .delete(`https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/products/${productId}`)
       .then(() => {
         fetchProducts();
         setAlertMessage("Product Delete Success!");
@@ -64,7 +64,7 @@ const ItemFormPage: React.FC<ItemFormPageProps> = ({ onSelectPage }) => {
   ) => {
     // Update the product status on the server
     axios
-      .put(`https://czvjcvb9y3.execute-api.us-west-2.amazonaws.com/Prod/products/instock/${productId}`, {
+      .put(`https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/products/instock/${productId}`, {
         isInStock: newStatus,
       })
       .then(() => {
@@ -100,7 +100,7 @@ const ItemFormPage: React.FC<ItemFormPageProps> = ({ onSelectPage }) => {
 
   const fetchCustomizations = () => {
     axios
-      .get("https://czvjcvb9y3.execute-api.us-west-2.amazonaws.com/Prod/customizations") // Adjust API endpoint
+      .get("https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/customizations") // Adjust API endpoint
       .then((response) => {
         setCustomizations(response.data);
       })
@@ -116,7 +116,7 @@ const ItemFormPage: React.FC<ItemFormPageProps> = ({ onSelectPage }) => {
 
   const fetchProducts = () => {
     axios
-      .get("https://czvjcvb9y3.execute-api.us-west-2.amazonaws.com/Prod/products") // Adjust API endpoint
+      .get("https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/products") // Adjust API endpoint
       .then((response) => {
         setProducts(response.data);
       })

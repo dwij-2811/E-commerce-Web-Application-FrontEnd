@@ -49,7 +49,7 @@ const AddOnFormPage: React.FC = () => {
     editAddOn: AddOn
   ) => {
     axios
-      .put(`https://czvjcvb9y3.execute-api.us-west-2.amazonaws.com/Prod/addons/${addOnId}`, editAddOn)
+      .put(`https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/addons/${addOnId}`, editAddOn)
       .then(() => {
         fetchAddons();
         handleCloseNewItemModal();
@@ -72,7 +72,7 @@ const AddOnFormPage: React.FC = () => {
 
   const handleDeleteAddOn = (addOnId: AddOn["id"]) => {
     axios
-      .delete(`https://czvjcvb9y3.execute-api.us-west-2.amazonaws.com/Prod/addons/${addOnId}`)
+      .delete(`https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/addons/${addOnId}`)
       .then(() => {
         fetchAddons();
         setAlertMessage("AddOns Delete Success!");
@@ -95,7 +95,7 @@ const AddOnFormPage: React.FC = () => {
   const handleAddonStatusChange = (addonId: AddOn["id"], newStatus: boolean) => {
     // Update the addon status on the server
     axios
-      .put(`https://czvjcvb9y3.execute-api.us-west-2.amazonaws.com/Prod/addons/instock/${addonId}`, {
+      .put(`https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/addons/instock/${addonId}`, {
         isInStock: newStatus,
       })
       .then(() => {
@@ -124,7 +124,7 @@ const AddOnFormPage: React.FC = () => {
   const handleAddNewAddOn = (_addOnId: AddOn["id"],
     newAddOn: AddOn) => {
     axios
-      .post("https://czvjcvb9y3.execute-api.us-west-2.amazonaws.com/Prod/addons", newAddOn) // Send the new add-on data to the backend
+      .post("https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/addons", newAddOn) // Send the new add-on data to the backend
       .then(() => {
         fetchAddons();
         handleCloseNewItemModal();
@@ -147,7 +147,7 @@ const AddOnFormPage: React.FC = () => {
 
   const fetchAddons = () => {
     axios
-      .get("https://czvjcvb9y3.execute-api.us-west-2.amazonaws.com/Prod/addons") // Adjust API endpoint
+      .get("https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/addons") // Adjust API endpoint
       .then((response) => {
         setAddons(response.data);
       })

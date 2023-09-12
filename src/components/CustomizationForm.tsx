@@ -41,7 +41,7 @@ const CustomizationForm: React.FC<CustomizationFormProps> = ({ onSubmit, customi
 
   const fetchAddons = () => {
     axios
-      .get("https://czvjcvb9y3.execute-api.us-west-2.amazonaws.com/Prod/addons") // Adjust API endpoint
+      .get("https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/addons") // Adjust API endpoint
       .then((response) => {
         setAddons(response.data);
       })

@@ -18,6 +18,8 @@ function SignupPage() {
   const [lastName, setLastName] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
+  const [loading, setLoading] = useState<boolean>(false);
+
   const { authToken, login } = useAuth();
 
   useEffect(() => {
@@ -35,6 +37,8 @@ function SignupPage() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    setLoading(true);
+
     const signUpData = {
       email,
       password,
@@ -43,8 +47,12 @@ function SignupPage() {
     };
 
     axios
-      .post("https://czvjcvb9y3.execute-api.us-west-2.amazonaws.com/Prod/users/register", signUpData)
+      .post(
+        "https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/users/register",
+        signUpData
+      )
       .then((response) => {
+        setLoading(false);
         login(response.data.auth_token);
         const lastPage = localStorage.getItem("lastPage");
         if (lastPage) {
@@ -54,14 +62,46 @@ function SignupPage() {
         }
       })
       .catch((error) => {
+        setLoading(false);
         setAlertMessage(error.response.data.error);
         setShowErrorAlert(true);
       });
   };
+
+  const checkPasswordStrength = (value: string) => {
+    const hasUppercase = /[A-Z]/.test(value);
+    const hasLowercase = /[a-z]/.test(value);
+    const hasNumber = /[0-9]/.test(value);
+    const hasSpecialChar = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/.test(value);
+    const isLengthValid = value.length >= 8 && value.length <= 16;
+
+    const isPasswordValid =
+      hasUppercase &&
+      hasLowercase &&
+      hasNumber &&
+      hasSpecialChar &&
+      isLengthValid;
+
+    if (!isPasswordValid) {
+      setAlertMessage(
+        "Password must contain upper/lowercase letters and numbers\nHave at least one special symbol\nMust be 8 to 16 characters."
+      );
+      setShowErrorAlert(true);
+    } else {
+      setShowErrorAlert(false);
+    }
+  };
+
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newPassword = e.target.value;
+    setPassword(newPassword);
+    checkPasswordStrength(newPassword);
+  };
+
   return (
     <div className="signup-container">
       <div className="signup-box">
-        <h2>Sign Up</h2>
+        <h2 style={{ textAlign: "center" }}>Sign Up</h2>
         <form onSubmit={handleSubmit} className="checkout-form">
           <div className="form-group">
             <label className="form-label" htmlFor="username">
@@ -86,7 +126,7 @@ function SignupPage() {
                 id="password"
                 className="form-control"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={handlePasswordChange}
                 required
               />
               <span
@@ -120,14 +160,15 @@ function SignupPage() {
               </div>
             </div>
           </div>
-          {showErrorAlert && <p style={{ color: "#eb0a0a" }}>{alertMessage}</p>}
+          {showErrorAlert && <div style={{ color: "#eb0a0a", textAlign: "center" }}>{alertMessage}</div>}
           <button type="submit" className="signup-button">
-            Sign Up
+            {loading ? "Processing..." : "Sign Up"}
           </button>
         </form>
         <div className="link-to-login">
-          <span></span>
-          <Link to="/login">Already have an account? Login here</Link>
+          <p style={{ textAlign: "center" }}>
+            <Link to="/login">Already have an account? Login here</Link>
+          </p>
         </div>
       </div>
     </div>

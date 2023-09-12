@@ -34,7 +34,7 @@ const ItemForm: React.FC<ItemFormProps> = ({ onSubmit }) => {
 
   const fetchCustomizations = () => {
     axios
-      .get("https://czvjcvb9y3.execute-api.us-west-2.amazonaws.com/Prod/customizations") // Adjust API endpoint
+      .get("https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/customizations") // Adjust API endpoint
       .then((response) => {
         setCustomizations(response.data);
       })
@@ -82,7 +82,7 @@ const ItemForm: React.FC<ItemFormProps> = ({ onSubmit }) => {
 
       try {
         const response = await axios.post(
-          "https://czvjcvb9y3.execute-api.us-west-2.amazonaws.com/Prod/upload",
+          "https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/upload",
           formData,
           {
             headers: { "Content-Type": "multipart/form-data" },
