@@ -26,5 +26,5 @@ This app uses backend restApi integrated with DynamoDB. Code for it can be found
 
 - [ ] Make Home Page
 - [ ] Decorate Nav Bar
-- [ ] Create Password Reset Page
+- [x] Create Password Reset Page
 - [ ] Fix Product Page Container
