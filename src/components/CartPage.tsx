@@ -22,7 +22,7 @@ const Cart = () => {
       {cartItems.length === 0 ? (
         <p>Your cart is empty.</p>
       ) : (
-        <div>
+        <div className="cart-main-container">
           {cartItems.map((item) => (
             <div className="cart-item" key={item.cartItemId}>
               <div className="cart-item-details">
@@ -34,14 +34,19 @@ const Cart = () => {
                   </span>
                 </p>
                 <div className="cart-item-info-details">
-                  <p className="cart-quantity">Spiciness: {item.spiciness * 100}%</p>
+                  <p className="cart-quantity">
+                    Spiciness: {item.spiciness * 100}%
+                  </p>
                   {item.addOns.length > 0 && (
                     <div className="selected-addons">
                       <ul>
                         {item.addOns.map((addOn: AddOn) => (
                           <li key={addOn.id}>
                             <div className="cart-addon">
-                              {addOn.name} {addOn.price > 0 ? ` (+$${addOn.price.toFixed(2)})` : null}
+                              {addOn.name}{" "}
+                              {addOn.price > 0
+                                ? ` (+$${addOn.price.toFixed(2)})`
+                                : null}
                             </div>
                           </li>
                         ))}
@@ -50,25 +55,23 @@ const Cart = () => {
                   )}
                 </div>
                 <button
-                className="cart-delete-button"
-                onClick={() =>
-                  handleRemoveItem(item.cartItemId, item.itemTotal)
-                }
-              >
-                Delete
-              </button>
+                  className="cart-delete-button"
+                  onClick={() =>
+                    handleRemoveItem(item.cartItemId, item.itemTotal)
+                  }
+                >
+                  Delete
+                </button>
               </div>
-              
             </div>
           ))}
-          
-          <Link to="/checkout">
-            <button type="button" className="cart-checkout-button">
-              Checkout ${cart.cartTotal.toFixed(2)}
-            </button>
-          </Link>
         </div>
       )}
+      <Link to="/checkout">
+        <button type="button" className="cart-checkout-button" disabled={cart.cartTotal > 0 ? false : true}>
+          Checkout ${cart.cartTotal.toFixed(2)}
+        </button>
+      </Link>
     </div>
   );
 };
