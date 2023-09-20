@@ -44,3 +44,8 @@
   border-radius: 50%;
   margin-bottom: 10px;
 }
+
+.scrollable-container {
+  overflow-y: auto; /* Enable vertical scrolling */
+  max-height: 83vh;
+}
