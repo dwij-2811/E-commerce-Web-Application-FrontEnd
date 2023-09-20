@@ -1,7 +1,5 @@
 import ProductMainPage from "./components/ProductMainPage";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import AdminPage from "./components/AdminPage";
-import ItemFormNew from "./components/ItemFormNew";
 import Checkout from "./components/Checkout";
 import OrderSuccessPage from "./components/OrderSuccessPage";
 import NavBar from "./components/NavBar";
@@ -29,8 +27,6 @@ function App() {
           <Router>
             <Routes>
               <Route path="/products" element={<ProductMainPage />} />
-              <Route path="/addproducts" element={<ItemFormNew />} />
-              <Route path="/admin" element={<AdminPage />} />
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/order-success" element={<OrderSuccessPage />} />
               <Route path="/login" element={<LoginPage />} />
@@ -40,6 +36,7 @@ function App() {
               <Route path="/contact-us" element={<ContactUs />} />
               <Route path="/kitchedorderpage" element={<KitchenOrderPage />} />
               <Route path="/about-us" element={<AboutUs />} />
+              <Route path="/" element={<AboutUs />} />
             </Routes>
           </Router>
         </div>
