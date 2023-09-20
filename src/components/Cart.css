@@ -3,7 +3,7 @@
   border: 1px solid #ddd;
   padding: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  min-height: 93vh;
+  height: 90vh;
 }
 
 #cart-container h3 {
@@ -12,6 +12,11 @@
   margin-bottom: 10px;
 }
 /* Your existing CSS styles */
+.cart-main-container{
+  max-height: 73vh;
+  overflow: auto;
+  padding: 5px;
+}
 
 .cart-item {
   background-color: #fff;
@@ -62,6 +67,10 @@
 .cart-checkout-button:hover {
   background-color: #0056b3;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.cart-checkout-button:disabled {
+  background-color: #99bbe0;
 }
 
 .cart-item {
