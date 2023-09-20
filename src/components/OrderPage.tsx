@@ -48,7 +48,7 @@ const OrdersPage = () => {
     // Fetch the last 10 orders from the API
     axios
       .get(
-        `https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/orders/getallorders?limit=${limit}&offset=${newOffset}`
+        `/orders/getallorders?limit=${limit}&offset=${newOffset}`
       )
       .then((response) => {
         setOrders(response.data.orders);
@@ -84,7 +84,7 @@ const OrdersPage = () => {
 
   const fetchOrder = (orderId: string) => {
     axios
-      .get(`https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/orders/getorder/${orderId}`)
+      .get(`/orders/getorder/${orderId}`)
       .then((response) => {
         setOrderDetails(response.data); // Update orderDetails state
       })

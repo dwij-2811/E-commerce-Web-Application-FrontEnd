@@ -14,7 +14,7 @@ const CheckoutPage = () => {
 
   const axiosInstance = axios.create({
     baseURL:
-      "https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production",
+      "",
     headers: {
       "Content-Type": "application/json",
     },
@@ -140,9 +140,9 @@ const CheckoutPage = () => {
       });
   };
 
-  const checkPhoneNumber = () => {
+  const checkPhoneNumber = (pNumber: string) => {
     const newOptData = {
-      phoneNumber: phoneNumber,
+      phoneNumber: pNumber,
     }
     axiosInstance
       .post("/users/check-phonenumber", newOptData)
@@ -150,6 +150,7 @@ const CheckoutPage = () => {
         setOtpRequired(false);
       }).catch((error) => {
         console.log(error);
+        setOtpRequired(true);
         setAlertMessage("Phone Number Verification Required...");
         setShowAlert(true);
 
@@ -162,7 +163,7 @@ const CheckoutPage = () => {
   const handlePhoneNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPhoneNumber(e.target.value)
     if (e.target.value.length == 10){
-      checkPhoneNumber()
+      checkPhoneNumber(e.target.value)
     }
   };
 
@@ -412,9 +413,9 @@ const CheckoutPage = () => {
                     </div>
                   </div>
                   {otpRequired && (
-                    <div>
+                    <>
                       <div className="first-name">
-                        <label className="form-label" htmlFor="phoneNumber">
+                        <label className="form-label" htmlFor="otp">
                           OTP
                         </label>
                         <div className="input-group mb-3">
@@ -433,12 +434,12 @@ const CheckoutPage = () => {
                           type="button"
                           className="btn btn-primary"
                           onClick={() => handleOtpSubmit()}
-                          style={{ marginTop: "30px", marginLeft: "10px" }}
+                          style={{ marginTop: "30px", marginLeft: "10px", width: "100%"}}
                         >
                           Submit Otp
                         </button>
                       </div>
-                    </div>
+                    </>
                   )}
                 </div>
               </div>

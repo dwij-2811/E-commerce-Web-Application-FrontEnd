@@ -48,7 +48,7 @@ function SignupPage() {
 
     axios
       .post(
-        "https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/users/register",
+        "/users/register",
         signUpData
       )
       .then((response) => {

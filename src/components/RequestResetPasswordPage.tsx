@@ -35,7 +35,7 @@ const RequestResetPasswordPage = () => {
     };
 
     axios
-      .post("https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/users/reset-password-request", loginData)
+      .post("/users/reset-password-request", loginData)
       .then(() => {
         setLoading(false);
         setAlertMessage("Check your email to reset password!");

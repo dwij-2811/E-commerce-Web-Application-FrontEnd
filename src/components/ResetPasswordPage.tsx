@@ -71,7 +71,7 @@ const ResetPasswordPage = () => {
     };
 
     axios
-      .post("https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/users/reset-password", loginData)
+      .post("/users/reset-password", loginData)
       .then(() => {
         setLoading(false);
         resetMessageSet("Password have been successfully reset!");

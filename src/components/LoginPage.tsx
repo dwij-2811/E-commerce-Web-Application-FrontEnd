@@ -50,7 +50,7 @@ const LoginPage = () => {
 
     axios
       .post(
-        "https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/users/login",
+        "/users/login",
         loginData
       )
       .then((response) => {

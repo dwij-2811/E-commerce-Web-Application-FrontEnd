@@ -51,7 +51,7 @@ const CategoriesFormPage: React.FC = () => {
     editItem: Categories
   ) => {
     axios
-      .put(`https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/categories/${categoryId}`, editItem)
+      .put(`/categories/${categoryId}`, editItem)
       .then(() => {
         fetchCategories();
         handleCloseNewItemModal();
@@ -74,7 +74,7 @@ const CategoriesFormPage: React.FC = () => {
 
   const handleDeleteProduct = (categoryId: Categories["id"]) => {
     axios
-      .delete(`https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/categories/${categoryId}`)
+      .delete(`/categories/${categoryId}`)
       .then(() => {
         fetchCategories();
         setAlertMessage("Category Delete Success!");
@@ -99,7 +99,7 @@ const CategoriesFormPage: React.FC = () => {
     newItem: Categories
   ) => {
     axios
-      .post("https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/categories", newItem)
+      .post("/categories", newItem)
       .then(() => {
         fetchCategories();
         handleCloseNewItemModal();
@@ -127,7 +127,7 @@ const CategoriesFormPage: React.FC = () => {
 
   const fetchCategories = () => {
     axios
-      .get("https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/categories") // Adjust API endpoint
+      .get("/categories") // Adjust API endpoint
       .then((response) => {
         setCategories(response.data);
       })
@@ -143,7 +143,7 @@ const CategoriesFormPage: React.FC = () => {
 
   const fetchProducts = () => {
     axios
-      .get("https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/products") // Adjust API endpoint
+      .get("/products") // Adjust API endpoint
       .then((response) => {
         setProducts(response.data);
       })

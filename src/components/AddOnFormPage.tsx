@@ -49,7 +49,7 @@ const AddOnFormPage: React.FC = () => {
     editAddOn: AddOn
   ) => {
     axios
-      .put(`https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/addons/${addOnId}`, editAddOn)
+      .put(`/addons/${addOnId}`, editAddOn)
       .then(() => {
         fetchAddons();
         handleCloseNewItemModal();
@@ -72,7 +72,7 @@ const AddOnFormPage: React.FC = () => {
 
   const handleDeleteAddOn = (addOnId: AddOn["id"]) => {
     axios
-      .delete(`https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/addons/${addOnId}`)
+      .delete(`/addons/${addOnId}`)
       .then(() => {
         fetchAddons();
         setAlertMessage("AddOns Delete Success!");
@@ -95,7 +95,7 @@ const AddOnFormPage: React.FC = () => {
   const handleAddonStatusChange = (addonId: AddOn["id"], newStatus: boolean) => {
     // Update the addon status on the server
     axios
-      .put(`https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/addons/instock/${addonId}`, {
+      .put(`/addons/instock/${addonId}`, {
         isInStock: newStatus,
       })
       .then(() => {
@@ -124,7 +124,7 @@ const AddOnFormPage: React.FC = () => {
   const handleAddNewAddOn = (_addOnId: AddOn["id"],
     newAddOn: AddOn) => {
     axios
-      .post("https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/addons", newAddOn) // Send the new add-on data to the backend
+      .post("/addons", newAddOn) // Send the new add-on data to the backend
       .then(() => {
         fetchAddons();
         handleCloseNewItemModal();
@@ -147,7 +147,7 @@ const AddOnFormPage: React.FC = () => {
 
   const fetchAddons = () => {
     axios
-      .get("https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/addons") // Adjust API endpoint
+      .get("/addons") // Adjust API endpoint
       .then((response) => {
         setAddons(response.data);
       })

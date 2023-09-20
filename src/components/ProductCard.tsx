@@ -27,7 +27,7 @@ function ProductCard() {
   const fetchCategories = () =>
     axios
       .get<Categories[]>(
-        "https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/categories"
+        "/categories"
       )
       .then((res) => res.data);
 
@@ -45,7 +45,7 @@ function ProductCard() {
   const fetchProducts = () =>
     axios
       .get<Item[]>(
-        "https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/products"
+        "/products"
       )
       .then((res) => res.data);
 
@@ -64,7 +64,7 @@ function ProductCard() {
   const fetchAddOns = () =>
     axios
       .get<AddOn[]>(
-        "https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/addons"
+        "/addons"
       )
       .then((res) => res.data);
 
@@ -83,7 +83,7 @@ function ProductCard() {
   const fetchCustomizations = () =>
     axios
       .get<Customizations[]>(
-        "https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/customizations"
+        "/customizations"
       )
       .then((res) => res.data);
 
@@ -97,6 +97,7 @@ function ProductCard() {
   });
 
   if (customizationsError) return <p>{customizationsError.message}</p>;
+  
   if (customizationsIsLoading || addOnsIsLoading || productsIsLoading || categoriesIsLoading)
     return (
       <>
@@ -146,12 +147,7 @@ function ProductCard() {
         </div>
 
         <div className="col-8">
-          <div
-            data-bs-spy="scroll"
-            data-bs-target="#navbar-example3"
-            data-bs-smooth-scroll="true"
-            className="scrollspy-example-2"
-          >
+          <div className="scrollable-container">
             {categories.map((category) => (
               <div
                 className="main-container"

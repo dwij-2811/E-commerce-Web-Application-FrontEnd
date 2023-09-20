@@ -34,7 +34,7 @@ const KitchenOrderPage: React.FC = () => {
   };
 
   useEffect(() => {
-    const socket = io("https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/");
+    const socket = io("/");
 
     socket.on("connect", () => {
       console.log("Connected to /neworders namespace");
@@ -69,7 +69,7 @@ const KitchenOrderPage: React.FC = () => {
       };
       axios
         .put(
-          `https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/orders/updateorder/${selectedOrder}`,
+          `/orders/updateorder/${selectedOrder}`,
           OrderReady
         )
         .then(() => {
@@ -107,7 +107,7 @@ const KitchenOrderPage: React.FC = () => {
       };
       axios
         .put(
-          `https://ijitkkifyi.execute-api.us-west-2.amazonaws.com/production/orders/updateorder/${selectedOrder}`,
+          `/orders/updateorder/${selectedOrder}`,
           OrderReady
         )
         .then(() => {
