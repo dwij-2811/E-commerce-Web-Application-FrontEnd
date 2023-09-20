@@ -21,6 +21,7 @@ export interface Categories {
   id: number;
   name: string;
   products: number[];
+  position: number;
 }
 
 export interface Customizations {
